@@ -26,6 +26,7 @@ module.exports = {
   title: "Cugbmao's Blog",
   description: "",
   cleanUrls: "with-subfolders",
+  mpa: true,
   themeConfig: {
     siteTitle: "Cugbmao's Blog",
     docFooter: {
@@ -71,6 +72,8 @@ module.exports = {
               env.sfcBlocks.scripts[0].content.replace("</script>", "") +
               `\n let ec${idx}_` +
               token.content.trim() +
+              // ` import 'echarts';
+              //  import VChart from 'vue-echarts'; `+
               "\n </script>";
             token.info = "javascript";
             return (

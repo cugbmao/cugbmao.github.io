@@ -1,6 +1,0 @@
-import{_ as s,c as a,o as n,d as e}from"./app.a1434bc9.js";const f=JSON.parse('{"title":"var、let、const","description":"","frontmatter":{},"headers":[],"relativePath":"Javascript/var、let、const.md"}'),t={name:"Javascript/var、let、const.md"},o=e(`<h1 id="var、let、const" tabindex="-1">var、let、const <a class="header-anchor" href="#var、let、const" aria-hidden="true">#</a></h1><p>从 nodejs 13 开始，不允许在不使用（var/let/const)关键字声明的情况下直接定义变量</p><div class="language-javascript"><button title="Copy Code" class="copy"></button><span class="lang">javascript</span><pre class="shiki"><code><span class="line"><span style="color:#676E95;">/**</span></span>
-<span class="line"><span style="color:#676E95;"> * nodejs 12及以前版本正常运行</span></span>
-<span class="line"><span style="color:#676E95;"> * 13及以后版本报错：ReferenceError: a is not defined</span></span>
-<span class="line"><span style="color:#676E95;"> */</span></span>
-<span class="line"><span style="color:#A6ACCD;">a </span><span style="color:#89DDFF;">=</span><span style="color:#A6ACCD;"> </span><span style="color:#F78C6C;">1</span></span>
-<span class="line"></span></code></pre></div>`,3),c=[o];function l(p,r,i,_,d,v){return n(),a("div",null,c)}const y=s(t,[["render",l]]);export{f as __pageData,y as default};

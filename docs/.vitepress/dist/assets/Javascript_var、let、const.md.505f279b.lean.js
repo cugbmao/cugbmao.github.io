@@ -1,1 +1,0 @@
-import{_ as s,c as a,o as n,d as e}from"./app.a1434bc9.js";const f=JSON.parse('{"title":"var、let、const","description":"","frontmatter":{},"headers":[],"relativePath":"Javascript/var、let、const.md"}'),t={name:"Javascript/var、let、const.md"},o=e("",3),c=[o];function l(p,r,i,_,d,v){return n(),a("div",null,c)}const y=s(t,[["render",l]]);export{f as __pageData,y as default};
