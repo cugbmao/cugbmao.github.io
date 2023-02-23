@@ -48,6 +48,6 @@ export default {
   enhanceApp(ctx) {
     Theme.enhanceApp(ctx);
     ctx.app.use(ElementPlus);
-    // ctx.app.component("v-chart", VChart);
+    ctx.app.component("v-chart", VChart);
   },
 };
