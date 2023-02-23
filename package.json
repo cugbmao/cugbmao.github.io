@@ -1,0 +1,20 @@
+{
+  "name": "blog",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "docs:dev": "vitepress dev docs",
+    "docs:build": "d vitepress build docs",
+    "docs:preview": "vitepress preview docs"
+  },
+  "devDependencies": {
+    "vitepress": "^1.0.0-alpha.32"
+  },
+  "dependencies": {
+    "echarts": "^5.4.1",
+    "element-plus": "^2.2.30",
+    "vue": "^3.2.45",
+    "vue-echarts": "^6.5.4"
+  }
+}
