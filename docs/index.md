@@ -10,37 +10,46 @@ features:
   - icon:
       src: /img/vue.svg
     title: Vue
-    alt: Vue
     details:
     link: /Vue3/
-  - icon: 🛠️
+  - icon:
+      src: /img/react.svg
     title: React
-    alt: React
     details:
     link: /React/
-  - icon: 🛠️
-    title: Java
-    alt: Java
+  - icon:
+      src: /img/css.svg
+    title: CSS
     details:
-    link: /Java/
-  - icon: 🛠️
+    link: /CSS/
+  - icon:
+      src: /img/javascript.svg
     title: Javascript
-    alt: Javascript
     details:
     link: /Javascript/
-  - icon: 🛠️
+  - icon:
+      src: /img/typescript.svg
     title: Typescript
-    alt: Typescript
     details:
     link: /Typescript/
-  - icon: 🛠️
+  - icon:
+      src: /img/java.svg
+    title: Java
+    details:
+    link: /Java/
+  - icon:
+      src: /img/shell.webp
+    title: Shell
+    details:
+    link: /Shell/
+  - icon:
+      src: /img/essay.png
     title: 杂文
-    alt: 杂文
     details:
     link: /Essay/
-  - icon: 🛠️
+  - icon:
+      src: /img/novel.png
     title: 小说
-    alt: 小说
     details:
     link: /Novel/
 ---

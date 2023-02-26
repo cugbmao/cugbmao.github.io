@@ -1,1 +1,5 @@
+---
+next: "ECharts"
+---
+
 # Javascript

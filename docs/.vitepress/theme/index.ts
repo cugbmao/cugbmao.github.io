@@ -9,45 +9,44 @@
 import Theme from "vitepress/theme";
 import ElementPlus from "element-plus";
 import "element-plus/dist/index.css";
-import "./style/var.css";
-import VChart from "vue-echarts";
-import "echarts";
-// import "dayjs/locale/zh-cn";
+import "./style/var.less";
 import "element-plus/theme-chalk/dark/css-vars.css";
-// import { use } from "echarts/core";
-// import { CanvasRenderer } from "echarts/renderers";
-// import { GaugeChart, LineChart, BarChart, PieChart } from "echarts/charts";
-// import {
-//   TooltipComponent,
-//   LegendComponent,
-//   MarkLineComponent,
-//   GraphicComponent,
-//   GridComponent,
-//   TitleComponent,
-//   DataZoomComponent,
-//   ToolboxComponent,
-// } from "echarts/components";
-// use([
-//   CanvasRenderer,
-//   GaugeChart,
-//   LineChart,
-//   BarChart,
-//   PieChart,
-//   TooltipComponent,
-//   LegendComponent,
-//   GraphicComponent,
-//   GridComponent,
-//   MarkLineComponent,
-//   TitleComponent,
-//   DataZoomComponent,
-//   ToolboxComponent,
-// ]);
 
+let search = null;
 export default {
   ...Theme,
-  enhanceApp(ctx) {
+  enhanceApp(ctx: any) {
     Theme.enhanceApp(ctx);
     ctx.app.use(ElementPlus);
-    ctx.app.component("v-chart", VChart);
+    if (typeof window !== "undefined") {
+      window.addEventListener("keydown", (e) => {
+        if (e.key === "Escape") {
+          // search.cleanSearch()
+          if (!search) {
+            if (ctx.app._instance.subTree?.component?.subTree?.children) {
+              ctx.app._instance.subTree.component.subTree.children.forEach(
+                (t) => {
+                  if (t.type.__name === "VPNav") {
+                    t.component.subTree.children.forEach((t1) => {
+                      if (t1.type.__name === "VPNavBar") {
+                        t1.component.subTree.dynamicChildren.forEach((t2) => {
+                          if (t2.type.__name === "Search") {
+                            // console.log(t2.component.devtoolsRawSetupState.open)
+                            // t2.component.devtoolsRawSetupState.open.value = true
+                            search = t2.component.devtoolsRawSetupState;
+                            // t2.component.openSearch()
+                          }
+                        });
+                      }
+                    });
+                  }
+                }
+              );
+            }
+          }
+          search && search.cleanSearch();
+        }
+      });
+    }
   },
 };
