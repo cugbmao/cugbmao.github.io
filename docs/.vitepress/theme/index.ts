@@ -18,35 +18,35 @@ export default {
   enhanceApp(ctx: any) {
     Theme.enhanceApp(ctx);
     ctx.app.use(ElementPlus);
-    console.log(ctx.app);
 
     if (typeof window !== "undefined") {
       window.addEventListener("keydown", (e) => {
         if (e.key === "Escape") {
+          document.querySelector(".modal-back")?.click();
           // search.cleanSearch()
-          if (!search) {
-            if (ctx.app._instance.subTree?.component?.subTree?.children) {
-              ctx.app._instance.subTree.component.subTree.children.forEach(
-                (t) => {
-                  if (t.type.__name === "VPNav") {
-                    t.component.subTree.children.forEach((t1) => {
-                      if (t1.type.__name === "VPNavBar") {
-                        t1.component.subTree.dynamicChildren.forEach((t2) => {
-                          if (t2.type.__name === "Search") {
-                            // console.log(t2.component.devtoolsRawSetupState.open)
-                            // t2.component.devtoolsRawSetupState.open.value = true
-                            search = t2.component.devtoolsRawSetupState;
-                            // t2.component.openSearch()
-                          }
-                        });
-                      }
-                    });
-                  }
-                }
-              );
-            }
-          }
-          search && search.cleanSearch();
+          // if (!search) {
+          //   if (ctx.app._instance.subTree?.component?.subTree?.children) {
+          //     ctx.app._instance.subTree.component.subTree.children.forEach(
+          //       (t) => {
+          //         if (t.type.__name === "VPNav") {
+          //           t.component.subTree.children.forEach((t1) => {
+          //             if (t1.type.__name === "VPNavBar") {
+          //               t1.component.subTree.dynamicChildren.forEach((t2) => {
+          //                 if (t2.type.__name === "Search") {
+          //                   // console.log(t2.component.devtoolsRawSetupState.open)
+          //                   // t2.component.devtoolsRawSetupState.open.value = true
+          //                   search = t2.component.devtoolsRawSetupState;
+          //                   // t2.component.openSearch()
+          //                 }
+          //               });
+          //             }
+          //           });
+          //         }
+          //       }
+          //     );
+          //   }
+          // }
+          // search && search.cleanSearch();
         }
       });
     }
