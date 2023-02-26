@@ -18,6 +18,8 @@ export default {
   enhanceApp(ctx: any) {
     Theme.enhanceApp(ctx);
     ctx.app.use(ElementPlus);
+    console.log(ctx.app);
+
     if (typeof window !== "undefined") {
       window.addEventListener("keydown", (e) => {
         if (e.key === "Escape") {
