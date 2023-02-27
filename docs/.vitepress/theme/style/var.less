@@ -21,3 +21,31 @@
     }
   }
 }
+@media (min-width: 1440px) {
+  .VPNavBar.has-sidebar {
+    .title:not(a) {
+      padding-left: 32px !important;
+      width: var(--vp-sidebar-width) !important;
+    }
+    .content {
+      padding-left: var(--vp-sidebar-width) !important;
+      padding-right: 32px !important;
+      .curtain {
+        width: calc(100% - var(--vp-sidebar-width)) !important;
+      }
+    }
+  }
+  .VPSidebar {
+    padding-left: 32px !important;
+    width: var(--vp-sidebar-width) !important;
+  }
+  .VPContent.has-sidebar {
+    padding-left: var(--vp-sidebar-width) !important;
+    padding-right: 0px !important;
+    .VPDoc.has-aside {
+      .content-container {
+        max-width: none !important;
+      }
+    }
+  }
+}

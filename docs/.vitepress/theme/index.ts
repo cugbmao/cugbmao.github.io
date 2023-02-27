@@ -11,17 +11,21 @@ import ElementPlus from "element-plus";
 import "element-plus/dist/index.css";
 import "./style/var.less";
 import "element-plus/theme-chalk/dark/css-vars.css";
+import VueLiveWithLayout from "./components/vue-live-with-layout";
+import liveEditor from "./components/liveEditor.vue";
 
-let search = null;
+// let search = null;
 export default {
   ...Theme,
   enhanceApp(ctx: any) {
     Theme.enhanceApp(ctx);
     ctx.app.use(ElementPlus);
-
+    ctx.app.component("live-editor", liveEditor);
+    ctx.app.component("VueLive", VueLiveWithLayout);
     if (typeof window !== "undefined") {
       window.addEventListener("keydown", (e) => {
         if (e.key === "Escape") {
+          // @ts-ignore:next-line
           document.querySelector(".modal-back")?.click();
           // search.cleanSearch()
           // if (!search) {
