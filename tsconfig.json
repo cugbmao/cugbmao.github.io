@@ -9,9 +9,11 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "esModuleInterop": true,
+    "allowJs": true,
     "lib": [
       "ESNext",
-      "DOM"
+      "DOM",
+      "ES2021.String"
     ],
     // "types": [
     //   "vite/client",

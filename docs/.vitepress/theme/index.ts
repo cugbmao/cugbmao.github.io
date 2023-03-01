@@ -13,10 +13,15 @@ import "./style/var.less";
 import "element-plus/theme-chalk/dark/css-vars.css";
 import VueLiveWithLayout from "./components/vue-live-with-layout";
 import liveEditor from "./components/liveEditor.vue";
+import NotFound from "./components/NotFound.vue";
 
 // let search = null;
+
 export default {
   ...Theme,
+  // Layout: Theme.Layout,
+  // enhanceApp: Theme.enhanceApp,
+  NotFound,
   enhanceApp(ctx: any) {
     Theme.enhanceApp(ctx);
     ctx.app.use(ElementPlus);

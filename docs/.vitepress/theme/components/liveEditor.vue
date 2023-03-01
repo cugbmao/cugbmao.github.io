@@ -58,7 +58,10 @@ const handleReady = (payload) => {
 };
 
 onMounted(() => {
-  code.value = props.rcode || "";
+  let value: string = props.rcode || "";
+
+  value = value.replaceAll("sscript", "script");
+  code.value = value;
 });
 
 // Status is available at all times via Codemirror EditorView
@@ -85,7 +88,7 @@ const log = (eventName: string, event: any) => {
   /* width: 50%; */
   :deep(.cm-editor) {
     flex: 1;
-    /* width: 100%; */
+    width: 50%;
   }
   iframe {
     flex: 1;
