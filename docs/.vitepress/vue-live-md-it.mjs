@@ -24,7 +24,7 @@ function addVueLive(md, opts) {
       return [];
     };
 
-    const code = token.content;
+    const code = token.content.replaceAll("sscript", "script");
 
     // analyze code to find requires
     // put all requires into a "requires" object

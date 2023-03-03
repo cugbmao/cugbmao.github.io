@@ -145,6 +145,7 @@ var _hmt = _hmt || [];
   },
   markdown: {
     config: (md) => {
+      md.use(vueLiveMd);
       const defaultRender = md.renderer.rules.fence;
       md.renderer.rules.fence = (tokens, idx, options, env, self) => {
         let token = tokens[idx];

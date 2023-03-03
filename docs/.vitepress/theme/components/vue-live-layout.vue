@@ -17,8 +17,8 @@
 </template>
 
 <script setup>
-import "prismjs/themes/prism-tomorrow.css";
-import "vue-live/style.css";
+// import "prismjs/themes/prism-tomorrow.css";
+// import "vue-live/style.css";
 
 defineProps({
   lang: String,
@@ -49,7 +49,8 @@ defineProps({
   white-space: pre-wrap;
 }
 .preview-code .preview {
-  background-color: rgb(249, 245, 245);
+  /* background-color: rgb(249, 245, 245); */
+  background-color: var(--vp-c-bg);
   text-align: center;
   box-sizing: border-box;
   padding: 12px;

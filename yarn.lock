@@ -559,7 +559,7 @@
   resolved "https://registry.npmjs.org/@vitejs/plugin-vue/-/plugin-vue-4.0.0.tgz#93815beffd23db46288c787352a8ea31a0c03e5e"
   integrity sha512-e0X4jErIxAB5oLtDqbHvHpJe/uWNkdpYV83AOG2xo2tEVSzCzewgJMtREZM30wXnM5ls90hxiOtAuVU6H5JgbA==
 
-"@vue/compiler-core@3.2.47", "@vue/compiler-core@^3.2.45":
+"@vue/compiler-core@3.2.47":
   version "3.2.47"
   resolved "https://registry.npmjs.org/@vue/compiler-core/-/compiler-core-3.2.47.tgz#3e07c684d74897ac9aa5922c520741f3029267f8"
   integrity sha512-p4D7FDnQb7+YJmO2iPEv0SQNeNzcbHdGByJDsT4lynf63AFkOTFN07HsiRSvjGo0QrxR/o3d0hUyNCUnBU2Tig==
@@ -577,7 +577,7 @@
     "@vue/compiler-core" "3.2.47"
     "@vue/shared" "3.2.47"
 
-"@vue/compiler-sfc@3.2.47", "@vue/compiler-sfc@^3.2.45":
+"@vue/compiler-sfc@3.2.47":
   version "3.2.47"
   resolved "https://registry.npmjs.org/@vue/compiler-sfc/-/compiler-sfc-3.2.47.tgz#1bdc36f6cdc1643f72e2c397eb1a398f5004ad3d"
   integrity sha512-rog05W+2IFfxjMcFw10tM9+f7i/+FFpZJJ5XHX72NP9eC2uRD+42M3pYcQqDXVYoj74kHMSEdQ/WmCjt8JFksQ==
@@ -623,6 +623,11 @@
   integrity sha512-7khqQ/75oyyg+N/e+iwV6lpy1f5wq759NdlS1fpAhFXa8VeAIKGgk2E/C4VF59lx5b+Ezs5fpp/5WsRYXQiKxQ==
   dependencies:
     "@vue/shared" "3.2.47"
+
+"@vue/repl@^1.3.2":
+  version "1.3.2"
+  resolved "https://registry.npmjs.org/@vue/repl/-/repl-1.3.2.tgz#f14b3f593ec80870963646f338b7950702ea4c46"
+  integrity sha512-5joGOuTFmjaugG3E1h/oP1EXSMcVXRUwLIoo8xvYQnqDrCT6g1SfsH1pfei5PpC5DUxMX1584CekZu6REgGYkQ==
 
 "@vue/runtime-core@3.2.47":
   version "3.2.47"
@@ -681,7 +686,7 @@ acorn-walk@^8.2.0:
   resolved "https://registry.npmjs.org/acorn-walk/-/acorn-walk-8.2.0.tgz#741210f2e2426454508853a2f44d0ab83b7f69c1"
   integrity sha512-k+iyHEuPgSw6SbuDpGQM+06HQUa04DZ3o+F6CSzXMvvI5KMvnaEqXe+YVe555R9nn6GPt404fos4wcgpw12SDA==
 
-acorn@^8.8.1:
+acorn@^8.8.2:
   version "8.8.2"
   resolved "https://registry.npmjs.org/acorn/-/acorn-8.8.2.tgz#1b2f25db02af965399b9776b0c2c391276d37c4a"
   integrity sha512-xjIYgE8HBrkpd/sJqOGNspf8uHG+NOHGOw6a/Urj8taM2EXfdNAH2oFcPeIFfsv3+kz/mJrS5VuMqbNLjCa2vw==
@@ -778,11 +783,6 @@ copy-anything@^2.0.1:
   integrity sha512-1j20GZTsvKNkc4BY3NpMOM8tt///wY3FpIzozTOFO2ffuZcV61nojHXVKIy3WM+7ADCy5FVhdZYHYDdgTU0yJw==
   dependencies:
     is-what "^3.14.1"
-
-core-js@^3.26.1:
-  version "3.28.0"
-  resolved "https://registry.npmjs.org/core-js/-/core-js-3.28.0.tgz#ed8b9e99c273879fdfff0edfc77ee709a5800e4a"
-  integrity sha512-GiZn9D4Z/rSYvTeg1ljAIsEqFm0LaN9gVtwDCrKL80zHtS31p9BAjmTxVqTQDMpwlMolJZOFntUG2uwyj7DAqw==
 
 crelt@^1.0.5:
   version "1.0.5"
@@ -1304,11 +1304,6 @@ preact@^10.0.0:
   resolved "https://registry.npmjs.org/preact/-/preact-10.12.1.tgz#8f9cb5442f560e532729b7d23d42fd1161354a21"
   integrity sha512-l8386ixSsBdbreOAkqtrwqHwdvR35ID8c3rKPa8lCWuO86dBi32QWHV4vfsZK1utLLFMvw+Z5Ad4XLkZzchscg==
 
-prismjs@^1.29.0:
-  version "1.29.0"
-  resolved "https://registry.npmjs.org/prismjs/-/prismjs-1.29.0.tgz#f113555a8fa9b57c35e637bba27509dcf802dd12"
-  integrity sha512-Kx/1w86q/epKcmte75LNrEoT+lX8pBpavuAbvJWRXar7Hz8jrtF+e3vY751p0R8H9HdArwaCTNDDzHg/ScJK1Q==
-
 prr@~1.0.1:
   version "1.0.1"
   resolved "https://registry.npmjs.org/prr/-/prr-1.0.1.tgz#d3fc114ba06995a45ec6893f484ceb1d78f5f476"
@@ -1554,7 +1549,7 @@ vue-inbrowser-compiler-independent-utils@^4.55.0:
   resolved "https://registry.npmjs.org/vue-inbrowser-compiler-independent-utils/-/vue-inbrowser-compiler-independent-utils-4.56.2.tgz#2ca2866b205eb1ef02c04b7a87b6a9f21000c3c7"
   integrity sha512-szE2vZDSkZlItq+K4MevgvCGKt5IzM6OkIjyCuj/09ty2akixeQGNFRXyDELMdmVVzmN+9nJn02YKnoPkhXHwA==
 
-vue-inbrowser-compiler-sucrase@^4.54.1:
+vue-inbrowser-compiler-sucrase@^4.56.6:
   version "4.56.6"
   resolved "https://registry.npmjs.org/vue-inbrowser-compiler-sucrase/-/vue-inbrowser-compiler-sucrase-4.56.6.tgz#8bcef2cda7123818afe91eaf38bdedfbd83b65ba"
   integrity sha512-mQiB+sCvcTcPNDKLOP1WrfwVf+7gFaVHMiaB/fdDF2rRsWLosltDR3yUMp2ZFc2fnaf4jV4MKlOueyWdp6nrZg==
@@ -1574,27 +1569,6 @@ vue-inbrowser-compiler-utils@^4.55.0:
     camelcase "^5.3.1"
     vue-inbrowser-compiler-demi "^4.56.5"
     vue-inbrowser-compiler-independent-utils "^4.55.0"
-
-vue-live@^2.3.2:
-  version "2.3.2"
-  resolved "https://registry.npmjs.org/vue-live/-/vue-live-2.3.2.tgz#ca3868bc25bd4b21caec452b715d9c1b09fa239a"
-  integrity sha512-v4eQXzknyIx4TslUbiOucmpSArLitRQ+3H9rfYazUOxD4YM+XZsb33+KaxLloWx0imNan8jqkKHa6yWsKGiaug==
-  dependencies:
-    "@vue/compiler-core" "^3.2.45"
-    "@vue/compiler-sfc" "^3.2.45"
-    acorn "^8.8.1"
-    acorn-walk "^8.2.0"
-    core-js "^3.26.1"
-    debounce "^1.2.1"
-    hash-sum "^2.0.0"
-    prismjs "^1.29.0"
-    vue-inbrowser-compiler-sucrase "^4.54.1"
-    vue-prism-editor "^2.0.0-alpha.2"
-
-vue-prism-editor@^2.0.0-alpha.2:
-  version "2.0.0-alpha.2"
-  resolved "https://registry.npmjs.org/vue-prism-editor/-/vue-prism-editor-2.0.0-alpha.2.tgz#aa53a88efaaed628027cbb282c2b1d37fc7c5c69"
-  integrity sha512-Gu42ba9nosrE+gJpnAEuEkDMqG9zSUysIR8SdXUw8MQKDjBnnNR9lHC18uOr/ICz7yrA/5c7jHJr9lpElODC7w==
 
 vue@^3.2.37, vue@^3.2.45, vue@^3.2.47:
   version "3.2.47"

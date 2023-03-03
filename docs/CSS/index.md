@@ -33,5 +33,7 @@
     mix-blend-mode: difference;
   }
 </style>
-<div></div>
+<body>
+  <div></div>
+</body>
 ```
