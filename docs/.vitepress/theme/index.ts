@@ -32,30 +32,41 @@ export default {
         if (e.key === "Escape") {
           // @ts-ignore:next-line
           document.querySelector(".modal-back")?.click();
-          // search.cleanSearch()
-          // if (!search) {
-          //   if (ctx.app._instance.subTree?.component?.subTree?.children) {
-          //     ctx.app._instance.subTree.component.subTree.children.forEach(
-          //       (t) => {
-          //         if (t.type.__name === "VPNav") {
-          //           t.component.subTree.children.forEach((t1) => {
-          //             if (t1.type.__name === "VPNavBar") {
-          //               t1.component.subTree.dynamicChildren.forEach((t2) => {
-          //                 if (t2.type.__name === "Search") {
-          //                   // console.log(t2.component.devtoolsRawSetupState.open)
-          //                   // t2.component.devtoolsRawSetupState.open.value = true
-          //                   search = t2.component.devtoolsRawSetupState;
-          //                   // t2.component.openSearch()
-          //                 }
-          //               });
-          //             }
-          //           });
-          //         }
-          //       }
-          //     );
-          //   }
-          // }
-          // search && search.cleanSearch();
+        }
+      });
+      window.addEventListener("click", (e) => {
+        const el = e.target as HTMLElement;
+        if (el.matches('div[class*="language-"] > button.run')) {
+          const parent = el.parentElement;
+          // const sibling = el.previousSibling
+          //   ?.previousSibling as HTMLPreElement | null;
+          // console.log(parent, sibling);
+          // // console.log(el.nextElementSibling);
+          // console.log(el.previousSibling);
+
+          if (!parent) {
+            return;
+          }
+
+          const sibling = parent.querySelector("code");
+
+          if (!sibling) return;
+          let text = "";
+          // console.log(sibling.querySelectorAll("span.line"));
+
+          sibling
+            .querySelectorAll("span.line:not(.diff.remove)")
+            .forEach((node) => (text += (node.textContent || "") + "\n"));
+          text = text.slice(0, -1);
+          // console.log(text);
+          let func = new Function(text);
+
+          try {
+            let result = func();
+            // alert(JSON.stringify(result));
+          } catch (e) {
+            alert(e);
+          }
         }
       });
     }

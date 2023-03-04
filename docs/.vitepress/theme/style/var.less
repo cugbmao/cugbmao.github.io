@@ -1,3 +1,4 @@
+@import (css) "./iconfont.css";
 :root {
   // --vp-home-hero-name-color: red;
 }
@@ -52,4 +53,26 @@
       }
     }
   }
+}
+
+.vp-doc [class*="language-"] > button.run {
+  width: 40px;
+  height: 40px;
+  background-color: var(--vp-code-block-bg);
+  font-size: 24px;
+  opacity: 0;
+  position: absolute;
+  z-index: 3;
+  top: 8px;
+  right: 56px;
+  direction: ltr;
+  &:hover {
+    background-color: var(--vp-code-copy-code-hover-bg);
+  }
+}
+.vp-doc [class*="language-"]:hover > button.run {
+  opacity: 0.7;
+}
+.vp-doc [class*="language-"]:hover > button.run:hover {
+  opacity: 1;
 }

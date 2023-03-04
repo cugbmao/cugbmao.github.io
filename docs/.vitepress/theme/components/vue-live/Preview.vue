@@ -252,7 +252,7 @@ export default defineComponent({
       // console.log(options);
 
       this.previewedComponent = markRaw(options);
-      console.log(this.previewedComponent);
+      // console.log(this.previewedComponent);
 
       this.iteration = this.iteration + 1;
       this.error = false;

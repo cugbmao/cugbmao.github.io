@@ -73,7 +73,6 @@ function sidebar() {
   //   },
   // ];
 }
-sidebar();
 module.exports = {
   lang: "zh-CN",
   title: "Cugbmao's Blog",
@@ -179,29 +178,49 @@ var _hmt = _hmt || [];
             );
           } else if (info.indexOf("livecode") > -1) {
             token.info = info.replace("livecode", "");
-
-            env.sfcBlocks.scripts = JSON.parse(
-              JSON.stringify(env.sfcBlocks.scripts)
-            );
-            if (env.sfcBlocks.scripts.length === 0) {
-              env.sfcBlocks.scripts[0] = {
-                content: "<script setup>\n</script>",
-                tagOpen: "<script setup>",
-                type: "script",
-                contentStripped: "\n",
-                tagClose: "</script>",
-              };
-            }
-            env.sfcBlocks.scripts[0].contentStripped +=
-              `let livecode${idx} = ` + token.content.trim();
-            env.sfcBlocks.scripts[0].content =
-              env.sfcBlocks.scripts[0].content.replace("</script>", "") +
-              `\n let livecode${idx} = \`` +
-              token.content.trim() +
-              "`\n </script>";
             const lang =
               info.replace("livecode").trim().split(" ")[0] || "html";
-            return `<live-editor lang="${lang}" :rcode="livecode${idx}"/>`;
+
+            // env.sfcBlocks.scripts = JSON.parse(
+            //   JSON.stringify(env.sfcBlocks.scripts)
+            // );
+            // if (env.sfcBlocks.scripts.length === 0) {
+            //   env.sfcBlocks.scripts[0] = {
+            //     content: "<script setup>\n</script>",
+            //     tagOpen: "<script setup>",
+            //     type: "script",
+            //     contentStripped: "\n",
+            //     tagClose: "</script>",
+            //   };
+            // }
+            // env.sfcBlocks.scripts[0].contentStripped +=
+            //   `let livecode${idx} = ` + token.content.trim();
+            // env.sfcBlocks.scripts[0].content =
+            //   env.sfcBlocks.scripts[0].content.replace("</script>", "") +
+            //   `\n let livecode${idx} = \`` +
+            //   token.content.trim() +
+            //   "`\n </script>";
+            let code = token.content; //.replaceAll("sscript", "script");
+            const codeClean = md.utils
+              .escapeHtml(code)
+              .replace(/\`/g, "\\`")
+              .replace(/\$/g, "\\$");
+            const markdownGenerated = `<live-editor lang="${lang}" 
+      :rcode="\`${codeClean}\`" 
+       />`;
+            return markdownGenerated;
+            // return `<live-editor lang="${lang}" :rcode="\`${codeClean}\`"/>`;
+          } else if (info.indexOf("run") > -1) {
+            token.info = info.replace("livecode", "");
+            const lang =
+              info.replace("run").trim().split(" ")[0] || "javascript";
+
+            let con = defaultRender(tokens, idx, options, env);
+
+            let cleanCon =
+              con.slice(0, -6) +
+              `<button title="Run Code" class="run iconfont icon-run"></button></div>`;
+            return cleanCon;
           }
         }
         return defaultRender(tokens, idx, options, env);

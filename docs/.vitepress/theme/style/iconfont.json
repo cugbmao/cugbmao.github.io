@@ -1,0 +1,16 @@
+{
+  "id": "3931016",
+  "name": "blog",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "34218604",
+      "name": "播放",
+      "font_class": "bofang",
+      "unicode": "e864",
+      "unicode_decimal": 59492
+    }
+  ]
+}
