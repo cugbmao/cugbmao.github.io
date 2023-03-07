@@ -9,7 +9,7 @@
     "docs:preview": "vitepress preview docs"
   },
   "devDependencies": {
-    "vitepress": "^1.0.0-alpha.32"
+    "vitepress": "^1.0.0-alpha.49"
   },
   "dependencies": {
     "@codemirror/lang-css": "^6.0.2",

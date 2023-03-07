@@ -38,7 +38,7 @@ features:
     details: ""
     link: /Java/
   - icon:
-      src: /img/shell.webp
+      src: /img/shell.svg
     title: Shell
     details: ""
     link: /Shell/

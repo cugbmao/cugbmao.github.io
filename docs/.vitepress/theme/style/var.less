@@ -3,13 +3,70 @@
   // --vp-home-hero-name-color: red;
 }
 
+body {
+  text-rendering: unset !important;
+  font-synthesis: unset !important;
+}
+
+@keyframes animate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+@property --d {
+  syntax: "<angle>";
+  inherits: true;
+  initial-value: -30deg;
+}
 .VPHome {
   .VPHomeFeatures {
     .container {
       .items {
         .item {
           .VPFeature {
+            border: none !important;
+            padding: 2px;
+            position: relative;
+            z-index: 1;
+            overflow: hidden;
+            &:before {
+              z-index: -1;
+              content: "";
+              position: absolute;
+              width: 200%;
+              height: 200%;
+              top: -50%;
+              // margin-top: -15px;
+              left: -50%;
+              // background-image: linear-gradient(
+              //   to right,
+              //   #21d4fd 50%,
+              //   #b721ff 50%
+              // );
+              background: conic-gradient(
+                from var(--d, 0deg),
+                #21d4fd,
+                #0000 30deg 120deg,
+                #b721ff 150deg 180deg,
+                #0000 210deg 300deg,
+                #21d4fd 330deg
+              );
+              opacity: 0;
+              animation: animate 6s linear infinite;
+              animation-play-state: paused;
+              // transform: rotate(3600deg);
+              // transition: 0.5s, 60s linear transform;
+            }
+            &:hover:before {
+              opacity: 1;
+              animation-play-state: running;
+            }
             .box {
+              background-color: var(--vp-c-bg-soft);
+              border-radius: 12px;
               align-items: center;
               .VPImage {
                 height: 160px;

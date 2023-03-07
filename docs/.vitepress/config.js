@@ -143,6 +143,7 @@ var _hmt = _hmt || [];
     sidebar: sidebar(),
   },
   markdown: {
+    lineNumbers: true,
     config: (md) => {
       md.use(vueLiveMd);
       const defaultRender = md.renderer.rules.fence;
