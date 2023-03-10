@@ -110,7 +110,6 @@ module.exports = {
       {},
       `
 let inMobile = window.location.pathname.startsWith('/mobile')
-debugger;
 if (window.screen.width < 960) {
   if (!inMobile) {
     window.location.assign(window.location.href.replace(window.location.origin, window.location.origin + '/mobile'))
