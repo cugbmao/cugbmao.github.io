@@ -22,10 +22,11 @@ jobs:
           node-version: 16
           cache: yarn
       - run: yarn install --frozen-lockfile
-      - name: Build
-        run: yarn docs:build
       - name: BuildMobile
         run: yarn docs:mobile
+      - run: mv docs/.vitepress/dist docs/.vitepress/mobile
+      - name: Build
+        run: yarn docs:build
       - run: mv docs/.vitepress/mobile docs/.vitepress/dist/
       - uses: actions/configure-pages@v2
       - uses: actions/upload-pages-artifact@v1
