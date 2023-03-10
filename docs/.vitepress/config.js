@@ -16,16 +16,16 @@ function nav() {
   // });
   // return navs;
   return [
-    { text: "Java", link: "/Java/index", activeMatch: "/Java/" },
-    { text: "Postgresql", link: "/Postgresql/", activeMatch: "/Postgresql/" },
+    // { text: "Java", link: "/Java/index", activeMatch: "/Java/" },
+    // { text: "Postgresql", link: "/Postgresql/", activeMatch: "/Postgresql/" },
     { text: "Javascript", link: "/Javascript/", activeMatch: "/Javascript/" },
-    { text: "Typescript", link: "/Typescript/", activeMatch: "/Typescript/" },
+    // { text: "Typescript", link: "/Typescript/", activeMatch: "/Typescript/" },
     { text: "CSS", link: "/CSS/", activeMatch: "/CSS/" },
     { text: "Vue3", link: "/Vue3/", activeMatch: "/Vue3/" },
-    { text: "React", link: "/React/", activeMatch: "/React/" },
+    // { text: "React", link: "/React/", activeMatch: "/React/" },
     { text: "Shell", link: "/Shell/", activeMatch: "/Shell/" },
-    { text: "杂文", link: "/Essay/", activeMatch: "/Eessay/" },
-    { text: "小说", link: "/Novel/", activeMatch: "/Novel/" },
+    // { text: "杂文", link: "/Essay/", activeMatch: "/Eessay/" },
+    // { text: "小说", link: "/Novel/", activeMatch: "/Novel/" },
   ];
 }
 function sidebar() {
@@ -50,6 +50,7 @@ function sidebar() {
             }
           }
         });
+        items.sort();
         side[`/${item}/`] = [
           {
             text: item,
@@ -108,6 +109,23 @@ module.exports = {
       "script",
       {},
       `
+let inMobile = window.location.pathname.startsWith('/mobile')
+debugger;
+if (window.screen.width < 960) {
+  if (!inMobile) {
+    window.location.assign(window.location.href.replace(window.location.origin, window.location.origin + '/mobile'))
+  }
+} else {
+  if (inMobile) {
+    window.location.assign(window.location.href.replace(window.location.origin + '/mobile', window.location.origin))
+  }
+}
+`,
+    ],
+    [
+      "script",
+      {},
+      `
 var _hmt = _hmt || [];
 (function() {
   var hm = document.createElement("script");
@@ -121,6 +139,9 @@ var _hmt = _hmt || [];
   // mpa: true,
   themeConfig: {
     siteTitle: "Cugbmao's Blog",
+    socialLinks: [
+      { icon: "github", link: "https://github.com/cugbmao/cugbmao.github.io" },
+    ],
     docFooter: {
       prev: "上一篇",
       next: "下一篇",
@@ -148,80 +169,84 @@ var _hmt = _hmt || [];
       md.use(vueLiveMd);
       const defaultRender = md.renderer.rules.fence;
       md.renderer.rules.fence = (tokens, idx, options, env, self) => {
-        let token = tokens[idx];
-        if (token) {
-          // const orgInfo = token.info;
-          let info = token.info ? String(token.info).trim() : "";
-          if (info.indexOf("echarts") > -1) {
-            env.sfcBlocks.scripts = JSON.parse(
-              JSON.stringify(env.sfcBlocks.scripts)
-            );
-            if (env.sfcBlocks.scripts.length === 0) {
-              env.sfcBlocks.scripts[0] = {
-                content: "<script setup>\n</script>",
-                tagOpen: "<script setup>",
-                type: "script",
-                contentStripped: "\n",
-                tagClose: "</script>",
-              };
-            }
-            env.sfcBlocks.scripts[0].contentStripped +=
-              `let ec${idx}_` + token.content.trim();
-            env.sfcBlocks.scripts[0].content =
-              env.sfcBlocks.scripts[0].content.replace("</script>", "") +
-              `\n let ec${idx}_` +
-              token.content.trim() +
-              "\n import ECharts from '@/components/ECharts.vue';\n </script>";
-            token.info = "javascript";
-            return (
-              defaultRender(tokens, idx, options, env) +
-              `<e-charts :option="ec${idx}_option"/>`
-            );
-          } else if (info.indexOf("livecode") > -1) {
-            token.info = info.replace("livecode", "");
-            const lang =
-              info.replace("livecode").trim().split(" ")[0] || "html";
+        if (process.env.BLOG_TARGET === "mobile") {
+          return defaultRender(tokens, idx, options, env);
+        } else {
+          let token = tokens[idx];
+          if (token) {
+            // const orgInfo = token.info;
+            let info = token.info ? String(token.info).trim() : "";
+            if (info.indexOf("echarts") > -1) {
+              env.sfcBlocks.scripts = JSON.parse(
+                JSON.stringify(env.sfcBlocks.scripts)
+              );
+              if (env.sfcBlocks.scripts.length === 0) {
+                env.sfcBlocks.scripts[0] = {
+                  content: "<script setup>\n</script>",
+                  tagOpen: "<script setup>",
+                  type: "script",
+                  contentStripped: "\n",
+                  tagClose: "</script>",
+                };
+              }
+              env.sfcBlocks.scripts[0].contentStripped +=
+                `let ec${idx}_` + token.content.trim();
+              env.sfcBlocks.scripts[0].content =
+                env.sfcBlocks.scripts[0].content.replace("</script>", "") +
+                `\n let ec${idx}_` +
+                token.content.trim() +
+                "\n import ECharts from '@/components/ECharts.vue';\n </script>";
+              token.info = "javascript";
+              return (
+                defaultRender(tokens, idx, options, env) +
+                `<e-charts :option="ec${idx}_option"/>`
+              );
+            } else if (info.indexOf("livecode") > -1) {
+              token.info = info.replace("livecode", "");
+              const lang =
+                info.replace("livecode").trim().split(" ")[0] || "html";
 
-            // env.sfcBlocks.scripts = JSON.parse(
-            //   JSON.stringify(env.sfcBlocks.scripts)
-            // );
-            // if (env.sfcBlocks.scripts.length === 0) {
-            //   env.sfcBlocks.scripts[0] = {
-            //     content: "<script setup>\n</script>",
-            //     tagOpen: "<script setup>",
-            //     type: "script",
-            //     contentStripped: "\n",
-            //     tagClose: "</script>",
-            //   };
-            // }
-            // env.sfcBlocks.scripts[0].contentStripped +=
-            //   `let livecode${idx} = ` + token.content.trim();
-            // env.sfcBlocks.scripts[0].content =
-            //   env.sfcBlocks.scripts[0].content.replace("</script>", "") +
-            //   `\n let livecode${idx} = \`` +
-            //   token.content.trim() +
-            //   "`\n </script>";
-            let code = token.content; //.replaceAll("sscript", "script");
-            const codeClean = md.utils
-              .escapeHtml(code)
-              .replace(/\`/g, "\\`")
-              .replace(/\$/g, "\\$");
-            const markdownGenerated = `<live-editor lang="${lang}" 
+              // env.sfcBlocks.scripts = JSON.parse(
+              //   JSON.stringify(env.sfcBlocks.scripts)
+              // );
+              // if (env.sfcBlocks.scripts.length === 0) {
+              //   env.sfcBlocks.scripts[0] = {
+              //     content: "<script setup>\n</script>",
+              //     tagOpen: "<script setup>",
+              //     type: "script",
+              //     contentStripped: "\n",
+              //     tagClose: "</script>",
+              //   };
+              // }
+              // env.sfcBlocks.scripts[0].contentStripped +=
+              //   `let livecode${idx} = ` + token.content.trim();
+              // env.sfcBlocks.scripts[0].content =
+              //   env.sfcBlocks.scripts[0].content.replace("</script>", "") +
+              //   `\n let livecode${idx} = \`` +
+              //   token.content.trim() +
+              //   "`\n </script>";
+              let code = token.content; //.replaceAll("sscript", "script");
+              const codeClean = md.utils
+                .escapeHtml(code)
+                .replace(/\`/g, "\\`")
+                .replace(/\$/g, "\\$");
+              const markdownGenerated = `<live-editor lang="${lang}" 
       :rcode="\`${codeClean}\`" 
        />`;
-            return markdownGenerated;
-            // return `<live-editor lang="${lang}" :rcode="\`${codeClean}\`"/>`;
-          } else if (info.indexOf("run") > -1) {
-            token.info = info.replace("livecode", "");
-            const lang =
-              info.replace("run").trim().split(" ")[0] || "javascript";
+              return markdownGenerated;
+              // return `<live-editor lang="${lang}" :rcode="\`${codeClean}\`"/>`;
+            } else if (info.indexOf("run") > -1) {
+              token.info = info.replace("livecode", "");
+              const lang =
+                info.replace("run").trim().split(" ")[0] || "javascript";
 
-            let con = defaultRender(tokens, idx, options, env);
+              let con = defaultRender(tokens, idx, options, env);
 
-            let cleanCon =
-              con.slice(0, -6) +
-              `<button title="Run Code" class="run iconfont icon-run"></button></div>`;
-            return cleanCon;
+              let cleanCon =
+                con.slice(0, -6) +
+                `<button title="Run Code" class="run iconfont icon-run"></button></div>`;
+              return cleanCon;
+            }
           }
         }
         return defaultRender(tokens, idx, options, env);

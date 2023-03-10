@@ -83,6 +83,22 @@ body {
   display: flex;
   justify-content: center;
 }
+@media (min-width: 960px) {
+  .livecode {
+    display: content;
+  }
+  .normalcode {
+    display: none;
+  }
+}
+@media (max-width) {
+  .livecode {
+    display: none;
+  }
+  .normalcode {
+    display: content;
+  }
+}
 @media (min-width: 1440px) {
   .VPNavBar.has-sidebar {
     .title:not(a) {
