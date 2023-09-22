@@ -109,8 +109,8 @@ module.exports = {
       "script",
       {},
       `
-let inMobile = window.location.pathname.startsWith('/mobile')
-if (window.screen.width < 960) {
+var inMobile = window.location.pathname.startsWith('/mobile')
+if (window.innerWidth < 960) {
   if (!inMobile) {
     window.location.assign(window.location.href.replace(window.location.origin, window.location.origin + '/mobile'))
   }

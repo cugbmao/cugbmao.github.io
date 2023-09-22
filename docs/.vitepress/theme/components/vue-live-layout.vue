@@ -35,7 +35,7 @@ defineProps({
 }
 .vp-doc .preview-code .block {
   flex-grow: 1;
-  width: 50%;
+  width: 100%;
   border-radius: 0;
   margin: 0;
   min-height: 300px;
@@ -66,18 +66,23 @@ defineProps({
   padding: 20px;
 }
 
-@media only screen and (max-width: 568px) {
-  .preview-code {
-    display: block;
-  }
-  .preview-code .block {
-    width: auto;
+@media (min-width: 960px) {
+  .vp-doc .preview-code .block {
+    width: 50%;
   }
 }
-@media only screen and (max-width: 419px) {
-  .preview-code {
-    margin: 0.85rem -1.5rem;
-    border-radius: 0;
-  }
-}
+/* @media only screen and (max-width: 568px) { */
+/*   .preview-code { */
+/*     display: block; */
+/*   } */
+/*   .preview-code .block { */
+/*     width: auto; */
+/*   } */
+/* } */
+/* @media only screen and (max-width: 419px) { */
+/*   .preview-code { */
+/*     margin: 0.85rem -1.5rem; */
+/*     border-radius: 0; */
+/*   } */
+/* } */
 </style>

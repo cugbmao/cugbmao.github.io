@@ -14,10 +14,10 @@
   display: flex;
 }
 .VueLive-editor {
-  width: 50%;
+  width: 100%;
 }
 .VueLivePreview {
   background-color: white;
-  width: 50%;
+  width: 100%;
 }
 </style>
