@@ -153,7 +153,17 @@ var _hmt = _hmt || [];
     outline: "deep", // 右侧大纲标题层级
     outlineTitle: "目录", // 右侧大纲标题文本配置
     outlineBadges: false, // 是否在大纲中显示 Badge 文本
-    lastUpdatedText: "最后更新", // 最后更新时间文本配置, 需先配置lastUpdated为true
+    lastUpdated: {
+      text: "最后更新",
+      formatOptions: {
+        forceLocale: true,
+        dateStyle: "medium",
+        timeStyle: "short",
+        timeZone: "Asia/Shanghai",
+      },
+    },
+    // lastUpdated: true,
+    // lastUpdatedText: "最后更新", // 最后更新时间文本配置, 需先配置lastUpdated为true
     // algolia: {
     //   appId: "QSR0388ORW",
     //   apiKey: "b5731a28a736c01c91a9d057041e08d4",
@@ -177,7 +187,7 @@ var _hmt = _hmt || [];
             let info = token.info ? String(token.info).trim() : "";
             if (info.indexOf("echarts") > -1) {
               env.sfcBlocks.scripts = JSON.parse(
-                JSON.stringify(env.sfcBlocks.scripts)
+                JSON.stringify(env.sfcBlocks.scripts),
               );
               if (env.sfcBlocks.scripts.length === 0) {
                 env.sfcBlocks.scripts[0] = {
